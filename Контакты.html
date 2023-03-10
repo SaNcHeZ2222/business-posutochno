@@ -17,12 +17,85 @@
     <script type="application/ld+json">{
 		"@context": "http://schema.org",
 		"@type": "Organization",
-		"name": ""
+		"name": "Site1"
 }</script>
     <meta name="theme-color" content="#478ac9">
     <meta property="og:title" content="Контакты">
+    <meta property="og:description" content="">
     <meta property="og:type" content="website">
-  <meta data-intl-tel-input-cdn-path="intlTelInput/"></head>
+  <script>
+    function gdprConfirmed() {
+        return true;
+    }
+    function dynamicLoadScript() {
+        var script = document.createElement('script');
+        script.src = 'https://www.google.com/recaptcha/api.js?render=6LdvTuwkAAAAACjFtTqq72j47SaobG1oDA3Ip2f6';
+        script.async = true;
+        document.body.appendChild(script);
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+        var confirmButton = document.querySelector('.u-cookies-consent .u-button-confirm');
+        if (confirmButton) {
+            confirmButton.onclick = dynamicLoadScript;
+        }
+    });
+    </script>
+    <script>
+    if (gdprConfirmed()) {
+        document.write("<sc" + "ript src=\"https://www.google.com/recaptcha/api.js?render=6LdvTuwkAAAAACjFtTqq72j47SaobG1oDA3Ip2f6\"></sc" + "ript>");
+    }
+    </script>
+    <script>
+    if (gdprConfirmed()) {
+        (function (grecaptcha, sitekey, actions) {
+            var recaptcha = {
+                execute: function (action, submitFormCb) {
+                    try {
+                        grecaptcha.execute(
+                            sitekey,
+                            {action: action}
+                        ).then(function (token) {
+                            var forms = document.getElementsByTagName('form');
+
+                            for (var i = 0; i < forms.length; i++) {
+                                var fields = forms[i].getElementsByTagName('input');
+
+                                for (var j = 0; j < fields.length; j++) {
+                                    var field = fields[j];
+
+                                    if ('recaptchaResponse' === field.getAttribute('name')) {
+                                        field.setAttribute('value', token);
+                                        break;
+                                    }
+                                }
+                            }
+                            submitFormCb();
+                        });
+                    } catch (e) {
+                        var formError = document.querySelector('.u-form-send-error');
+
+                        if (formError) {
+                            formError.innerText = 'Неверный владелец сайта: ' + e.message.replace(/:[\s\S]*/, '');
+                            formError.style.display = 'block';
+                        }
+                    }
+                },
+
+                executeContact: function (submitFormCb) {
+                    recaptcha.execute(actions['contact'], submitFormCb);
+                }
+            };
+
+            window.recaptchaObject = recaptcha;
+        })(
+            grecaptcha,
+            
+            '6LdvTuwkAAAAACjFtTqq72j47SaobG1oDA3Ip2f6',
+            {'contact': 'contact'}
+        );
+    }
+    </script>
+<meta data-intl-tel-input-cdn-path="intlTelInput/"></head>
   <body class="u-body u-xl-mode" data-lang="ru"><header class="u-clearfix u-header u-header" id="sec-f361"><div class="u-clearfix u-sheet u-sheet-1">
         <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1">
           <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0px;">
@@ -88,9 +161,9 @@
                             <label for="name-da97" class="u-label">Name</label>
                             <input type="text" placeholder="Введите ваше имя" id="name-da97" name="name" class="u-border-no-bottom u-border-no-left u-border-no-right u-border-no-top u-grey-5 u-input u-input-rectangle" required="">
                           </div>
-                          <div class="u-form-email u-form-group u-label-none">
-                            <label for="email-da97" class="u-label">Email</label>
-                            <input type="email" placeholder="Введите ваш номер телефона" id="email-da97" name="phone" class="u-border-no-bottom u-border-no-left u-border-no-right u-border-no-top u-grey-5 u-input u-input-rectangle" required="">
+                          <div class="u-form-group u-form-phone u-label-none u-form-group-2">
+                            <label for="phone-1561" class="u-label">Телефон</label>
+                            <input type="tel" placeholder="Введите ваш номер телефона" id="phone-1561" name="phone-1" class="u-border-no-bottom u-border-no-left u-border-no-right u-border-no-top u-grey-5 u-input u-input-rectangle" required="" pattern="\d{0,2}[\s\(\-]?([0-9]{3})[\s\)\-]?([\s\-]?)([0-9]{3})[\s\-]?([0-9]{2})[\s\-]?([0-9]{2})">
                           </div>
                           <div class="u-form-group u-form-message u-label-none">
                             <label for="message-da97" class="u-label">Message</label>
@@ -104,6 +177,7 @@
                           <div class="u-form-send-error u-form-send-message">Похоже что-то пошло не так, вы можете перейти к нам в соц сети и написать лично</div>
                           <input type="hidden" value="" name="recaptchaResponse">
                           <input type="hidden" name="formServices" value="98cc49bdffa3ef1cd256af73213595fa">
+                          <input type="hidden" name="siteKey" value="6LdvTuwkAAAAACjFtTqq72j47SaobG1oDA3Ip2f6">
                         </form>
                       </div>
                     </div>
@@ -121,16 +195,6 @@
         <a href="https://nicepage.com/c/real-estate-website-templates" class="u-active-none u-bottom-left-radius-0 u-bottom-right-radius-0 u-btn u-btn-rectangle u-button-style u-hover-none u-none u-radius-0 u-top-left-radius-0 u-top-right-radius-0 u-btn-1"><span class="u-icon"><svg class="u-svg-content" viewBox="0 0 405.333 405.333" x="0px" y="0px" style="width: 1em; height: 1em;"><path d="M373.333,266.88c-25.003,0-49.493-3.904-72.704-11.563c-11.328-3.904-24.192-0.896-31.637,6.699l-46.016,34.752    c-52.8-28.181-86.592-61.952-114.389-114.368l33.813-44.928c8.512-8.512,11.563-20.971,7.915-32.64    C142.592,81.472,138.667,56.96,138.667,32c0-17.643-14.357-32-32-32H32C14.357,0,0,14.357,0,32    c0,205.845,167.488,373.333,373.333,373.333c17.643,0,32-14.357,32-32V298.88C405.333,281.237,390.976,266.88,373.333,266.88z"></path></svg><img></span>&nbsp;+7 (937) 149-61-72
         </a><span class="u-file-icon u-icon u-icon-circle u-palette-1-base u-text-white u-icon-2" data-href="https://t.me/BeepBeepIamJeep"><img src="images/87413-a4a5d451.png" alt=""></span>
       </div></footer>
-    <section class="u-backlink u-clearfix u-grey-80">
-      <a class="u-link" href="https://nicepage.com/website-templates" target="_blank">
-        <span>Website Templates</span>
-      </a>
-      <p class="u-text">
-        <span>created with</span>
-      </p>
-      <a class="u-link" href="" target="_blank">
-        <span>Website Builder Software</span>
-      </a>. 
-    </section>
+  
   
 </body></html>
